@@ -18,6 +18,19 @@ buttons.forEach(button => {
                 }
                 break;
 
+                case "AC":
+                    expression = ""; // Clear the expression
+                    input.value = expression;
+                    break;
+
+                case "del":
+                    expression = expression.slice(0, -1); // Remove last character
+                    input.value = expression;
+                    break;
+
+
+            
+
             default:
                 if (/[\d+\-*/.]/.test(value)) { // Allow only valid characters
                     expression += value;
