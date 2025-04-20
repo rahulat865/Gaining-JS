@@ -3,27 +3,26 @@ const buttons = document.querySelectorAll("button");
 
 let expression = "";
 
-buttons.forEach(button =>{
-    button.addEventListener("click" , () =>{
-        const value = button.textContent;
+buttons.forEach(button => {
+    button.addEventListener("click", () => {
+        const value = button.textContent.trim(); // Trim spaces
 
-        switch(value){
+        switch (value) {
             case "=":
-                try{
+                try {
                     expression = eval(expression).toString();
                     input.value = expression;
-
-                }
-                catch{
+                } catch {
                     input.value = "error";
-                    expression ="";
+                    expression = "";
                 }
                 break;
 
-                default:
+            default:
+                if (/[\d+\-*/.]/.test(value)) { // Allow only valid characters
                     expression += value;
                     input.value = expression;
-
+                }
         }
     });
 });
